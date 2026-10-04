@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TextLens — Text Complexity Analyzer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- HEADER -->
+        <header>
+            <div class="logo">
+                <div class="logo-mark">T</div>
+                <div>
+                    <h1>TextLens</h1>
+                    <span>TEXT COMPLEXITY ANALYZER</span>
+                </div>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                LOCAL ANALYSIS
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-label">LINGUISTIC INSIGHT</div>
+
+            <h2>
+                Understand the
+                <span>complexity</span>
+                of your text.
+            </h2>
+
+            <p>
+                Analyze readability, vocabulary, sentence structure
+                and reading difficulty instantly.
+            </p>
+        </section>
+
+        <!-- MAIN GRID -->
+        <main>
+
+            <!-- INPUT -->
+            <section class="input-card">
+
+                <div class="card-heading">
+                    <div>
+                        <span class="small-label">INPUT TEXT</span>
+                        <h3>Paste your content</h3>
+                    </div>
+
+                    <span id="charCount">0 characters</span>
+                </div>
+
+                <textarea
+                    id="textInput"
+                    placeholder="Paste an article, paragraph, essay, speech or any other text here..."
+                ></textarea>
+
+                <div class="input-actions">
+                    <button id="exampleBtn" class="secondary-btn">
+                        Load Example
+                    </button>
+
+                    <button id="clearBtn" class="secondary-btn">
+                        Clear
+                    </button>
+
+                    <button id="analyzeBtn" class="primary-btn">
+                        Analyze Text →
+                    </button>
+                </div>
+
+                <div id="errorMessage" class="error"></div>
+
+            </section>
+
+
+            <!-- COMPLEXITY SCORE -->
+            <section class="score-card">
+
+                <div class="small-label">COMPLEXITY LEVEL</div>
+
+                <div class="score-circle">
+                    <div>
+                        <strong id="complexityScore">0</strong>
+                        <small>/ 100</small>
+                    </div>
+                </div>
+
+                <h3 id="complexityLabel">Waiting for text</h3>
+
+                <p id="complexityDescription">
+                    Enter some text to calculate its complexity.
+                </p>
+
+            </section>
+
+
+            <!-- METRICS -->
+            <section class="metrics">
+
+                <div class="metric-card">
+                    <span class="metric-icon">Aa</span>
+                    <span class="metric-name">WORDS</span>
+                    <strong id="wordCount">0</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span class="metric-icon">¶</span>
+                    <span class="metric-name">SENTENCES</span>
+                    <strong id="sentenceCount">0</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span class="metric-icon">L</span>
+                    <span class="metric-name">AVG WORD LENGTH</span>
+                    <strong id="avgWordLength">0</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span class="metric-icon">S</span>
+                    <span class="metric-name">AVG SENTENCE</span>
+                    <strong id="avgSentenceLength">0</strong>
+                </div>
+
+            </section>
+
+
+            <!-- READING PROFILE -->
+            <section class="profile-card">
+
+                <div class="section-title">
+                    <span class="small-label">READING PROFILE</span>
+                    <h3>How difficult is this text?</h3>
+                </div>
+
+                <div class="profile-row">
+
+                    <div class="profile-item">
+                        <span>Vocabulary</span>
+                        <div class="progress">
+                            <div id="vocabularyBar"></div>
+                        </div>
+                        <strong id="vocabularyLevel">—</strong>
+                    </div>
+
+                    <div class="profile-item">
+                        <span>Sentence Structure</span>
+                        <div class="progress">
+                            <div id="sentenceBar"></div>
+                        </div>
+                        <strong id="sentenceLevel">—</strong>
+                    </div>
+
+                    <div class="profile-item">
+                        <span>Overall Difficulty</span>
+                        <div class="progress">
+                            <div id="difficultyBar"></div>
+                        </div>
+                        <strong id="difficultyLevel">—</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ADDITIONAL INFORMATION -->
+            <section class="details-grid">
+
+                <div class="detail-card">
+                    <span class="small-label">READING TIME</span>
+                    <strong id="readingTime">0 min</strong>
+                    <p>Estimated time to read</p>
+                </div>
+
+                <div class="detail-card">
+                    <span class="small-label">LONGEST SENTENCE</span>
+                    <strong id="longestSentence">0 words</strong>
+                    <p>Maximum sentence length</p>
+                </div>
+
+                <div class="detail-card">
+                    <span class="small-label">UNIQUE WORDS</span>
+                    <strong id="uniqueWords">0</strong>
+                    <p>Different words used</p>
+                </div>
+
+                <div class="detail-card">
+                    <span class="small-label">VOCABULARY RATIO</span>
+                    <strong id="vocabularyRatio">0%</strong>
+                    <p>Unique words / total words</p>
+                </div>
+
+            </section>
+
+
+            <!-- READING ADVICE -->
+            <section class="advice-card">
+
+                <div class="advice-symbol">✦</div>
+
+                <div>
+                    <span class="small-label">TEXTLENS INSIGHT</span>
+
+                    <h3 id="adviceTitle">
+                        Your analysis will appear here.
+                    </h3>
+
+                    <p id="adviceText">
+                        TextLens examines several linguistic characteristics
+                        to estimate how easy or difficult a passage is to read.
+                    </p>
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <footer>
+            <span>TextLens</span>
+            <span>Educational NLP Project · Text & Speech Analysis</span>
+            <span>100% Client-Side</span>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
