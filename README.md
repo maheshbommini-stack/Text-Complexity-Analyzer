@@ -89,6 +89,9 @@ The interface works across:
 - Mobile devices
 
 ---
+## 🌐 Live Demo
+
+👉 [TextLens — Text Complexity Analyzer](https://maheshbommini-stack.github.io/Text-Complexity-Analyzer/)
 
 ## 🧠 How It Works
 
@@ -112,7 +115,4 @@ Complexity Calculation
 Reading Profile
     ↓
 TextLens Insight
----
-## 🌐 Live Demo
-
-👉 [TextLens — Text Complexity Analyzer](https://maheshbommini-stack.github.io/Text-Complexity-Analyzer/)
+--- 
